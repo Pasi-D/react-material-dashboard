@@ -1,0 +1,11 @@
+# Production
+/build/*
+
+# Node Modules
+/node_modules/*
+
+# public
+/public/*
+
+# .vscode
+/.vscode/*
