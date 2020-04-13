@@ -3,6 +3,13 @@ import ReactDOM from "react-dom";
 import "assets/css/index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { checkAuth } from "session/auth";
+
+/**
+ * If the page is refreshed or the app closed and reopened, that status will be lost.
+ * To get around that, call checkAuth when the app is first loaded.
+ */
+checkAuth();
 
 ReactDOM.render(
     <React.StrictMode>
