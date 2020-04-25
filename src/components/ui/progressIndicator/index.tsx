@@ -1,5 +1,14 @@
 /**
  * Custom Progress Indicator
+ *
+ * Usage:
+ *
+ * Ex:
+ *
+ * import ProgressIndicator from "components/ui/progressIndicator";
+ * ....
+ * <ProgressIndicator type="linear" />
+ * ...
  */
 import React, { FC } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
@@ -12,6 +21,7 @@ import LinearProgress, { LinearProgressProps } from "@material-ui/core/LinearPro
 interface BaseProgressIndicatorProps {
     /**
      * Type of the Progress Indicator.
+     * This can be "circular" or "linear"
      */
     type: "circular" | "linear";
 }
