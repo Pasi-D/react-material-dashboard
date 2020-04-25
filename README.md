@@ -1,6 +1,24 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React Material Dashboard
 
-## Available Scripts
+![React Material Dashboard][logo]
+
+[logo]: public/logo192.png "React Material Dashboard"
+
+React Material Dashboard was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Table of Contents
+
+* [Quick Start](#quick-start)
+* [File Structure](#file-structure)
+* [Learn More](#learn-more)
+
+## Quick start
+
+Create a copy of the environment variables
+
+```bash
+  cp .env.dist .env
+```
 
 In the project directory, you can run:
 
@@ -37,8 +55,11 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## File Structure
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
