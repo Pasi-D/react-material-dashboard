@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 
-import AppBar from "components/layout/AppBar";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
+import AppBar from "components/layout/AppBar";
 import Copyright from "components/layout/Footer/Copyright";
 
 import Logo from "assets/images/logo.svg";

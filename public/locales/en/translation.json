@@ -1,0 +1,9 @@
+{
+  "projectName": "React Material Dashboard",
+  "welcome": "Welcome to React Material Dashboard",
+  "helpToTranslate": "Help to Translate",
+  "general": {
+      "changeLanguage": "Change Language",
+      "login": "Login"
+  }
+}
