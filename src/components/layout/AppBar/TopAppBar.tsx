@@ -13,6 +13,7 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
+import Link from "@material-ui/core/Link";
 import MenuItem from "@material-ui/core/MenuItem";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -22,6 +23,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import LanguageIcon from "@material-ui/icons/Translate";
 import MenuIcon from "@material-ui/icons/Menu";
+
+import Logo from "assets/images/logo.svg";
 
 import { LANGUAGES } from "i18n";
 
@@ -87,6 +90,9 @@ const TopAppBar: FC<ITopAppBarProps> = ({
                     : classes.appBar
             }>
             <Toolbar className={classes.toolbar}>
+                <Link component={RouterLink} to="/">
+                    <img src={Logo} alt="logo" className={classes.logo} />
+                </Link>
                 {isAuthenticated && (
                     <>
                         <IconButton

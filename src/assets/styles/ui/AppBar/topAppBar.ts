@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
                 display: "block"
             }
         },
+        logo: {
+            maxWidth: "50px",
+            paddingRight: 15
+        },
         loginButton: {
             float: "right"
         },
