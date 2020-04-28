@@ -22,19 +22,30 @@ const useStyles = makeStyles((theme: Theme) =>
                 duration: theme.transitions.duration.enteringScreen
             })
         },
+        language: {
+            margin: theme.spacing(0, 0.5, 0, 1),
+            display: "none",
+            [theme.breakpoints.up("md")]: {
+                display: "block"
+            }
+        },
+        logo: {
+            maxWidth: "50px",
+            paddingRight: 15
+        },
         loginButton: {
             float: "right"
-        },
-        // This group of buttons will be aligned to the right
-        rightToolbar: {
-            marginLeft: "auto",
-            marginRight: -12
         },
         menuButton: {
             marginRight: 36
         },
         menuButtonHidden: {
             display: "none"
+        },
+        // This group of buttons will be aligned to the right
+        rightToolbar: {
+            marginLeft: "auto",
+            marginRight: -12
         },
         title: {
             flexGrow: 1,

@@ -4,18 +4,29 @@
  * Read more: https://material.io/components/app-bars-top
  */
 import React, { FC, useState, MouseEvent } from "react";
-import { useHistory, Link as RouterLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useHistory, Link as RouterLink, useLocation } from "react-router-dom";
 
 import AppBar from "@material-ui/core/AppBar";
+import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
+import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
+import Link from "@material-ui/core/Link";
 import MenuItem from "@material-ui/core/MenuItem";
 import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import LanguageIcon from "@material-ui/icons/Translate";
 import MenuIcon from "@material-ui/icons/Menu";
+
+import Logo from "assets/images/logo.svg";
+
+import { LANGUAGES } from "i18n";
 
 import clsx from "clsx";
 import useStyles from "assets/styles/ui/AppBar/topAppBar";
@@ -36,17 +47,33 @@ const TopAppBar: FC<ITopAppBarProps> = ({
     isDrawerToggled: open,
     openDrawer
 }) => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const isProfileMenuOpen = Boolean(anchorEl);
+    const { t, i18n } = useTranslation();
+
+    const [profileMenu, setProfileMenu] = useState<null | HTMLElement>(null);
+    const [languageMenu, setLanguageMenu] = useState<null | HTMLElement>(null);
 
     const history = useHistory();
+    let location = useLocation();
 
     const handleProfileMenu = (event: MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
+        setProfileMenu(event.currentTarget);
     };
 
     const handleProfileMenuClose = () => {
-        setAnchorEl(null);
+        setProfileMenu(null);
+    };
+
+    const handleLanguageMenuClick = (event: MouseEvent<HTMLElement>) => {
+        setLanguageMenu(event.currentTarget);
+    };
+
+    const handleLanguageChange = (language: string) => {
+        handleLanguageMenuClose();
+        i18n.changeLanguage(language);
+    };
+
+    const handleLanguageMenuClose = () => {
+        setLanguageMenu(null);
     };
 
     const handleUserLogout = () => {
@@ -63,6 +90,9 @@ const TopAppBar: FC<ITopAppBarProps> = ({
                     : classes.appBar
             }>
             <Toolbar className={classes.toolbar}>
+                <Link component={RouterLink} to="/">
+                    <img src={Logo} alt="logo" className={classes.logo} />
+                </Link>
                 {isAuthenticated && (
                     <>
                         <IconButton
@@ -95,7 +125,7 @@ const TopAppBar: FC<ITopAppBarProps> = ({
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
-                                anchorEl={anchorEl}
+                                anchorEl={profileMenu}
                                 anchorOrigin={{
                                     vertical: "top",
                                     horizontal: "right"
@@ -105,7 +135,7 @@ const TopAppBar: FC<ITopAppBarProps> = ({
                                     vertical: "top",
                                     horizontal: "right"
                                 }}
-                                open={isProfileMenuOpen}
+                                open={Boolean(profileMenu)}
                                 onClose={handleProfileMenuClose}>
                                 <MenuItem onClick={handleProfileMenuClose}>Help</MenuItem>
                                 <MenuItem onClick={handleUserLogout}>Logout</MenuItem>
@@ -115,13 +145,68 @@ const TopAppBar: FC<ITopAppBarProps> = ({
                 )}
                 {!isAuthenticated && (
                     <section className={classes.rightToolbar}>
-                        <Button
-                            component={RouterLink}
-                            className={classes.loginButton}
-                            color="inherit"
-                            to="/login">
-                            Login
-                        </Button>
+                        <Tooltip
+                            title={t("general.changeLanguage") || "Change Language"}
+                            enterDelay={300}>
+                            <Button
+                                color="inherit"
+                                aria-owns={languageMenu ? "language-menu" : undefined}
+                                aria-label={t("general.changeLanguage")}
+                                onClick={handleLanguageMenuClick}
+                                data-ga-event-category="header"
+                                data-ga-event-action="language">
+                                <LanguageIcon />
+                                <span className={classes.language}>
+                                    {
+                                        LANGUAGES.filter(
+                                            language => language.code === i18n.language
+                                        )[0].text
+                                    }
+                                </span>
+                                <ExpandMoreIcon fontSize="small" />
+                            </Button>
+                        </Tooltip>
+                        <Menu
+                            id="language-menu"
+                            anchorEl={languageMenu}
+                            open={Boolean(languageMenu)}
+                            onClose={handleLanguageMenuClose}>
+                            {LANGUAGES.map(language => (
+                                <MenuItem
+                                    key={language.code}
+                                    selected={i18n.language === language.code}
+                                    lang={language.code}
+                                    onClick={() => {
+                                        handleLanguageChange(language.code);
+                                    }}>
+                                    {language.text}
+                                </MenuItem>
+                            ))}
+                            <Box my={1}>
+                                <Divider />
+                            </Box>
+                            <MenuItem
+                                component="a"
+                                data-no-link="true"
+                                href="https://github.com/xXZang3tsuXx/react-material-dashboard"
+                                rel="noopener nofollow"
+                                target="_blank"
+                                key={i18n.language}
+                                lang={i18n.language}
+                                hrefLang="en"
+                                onClick={handleLanguageMenuClose}>
+                                {t("helpToTranslate")}
+                            </MenuItem>
+                        </Menu>
+                        {location.pathname !== "/login" && (
+                            <Button
+                                component={RouterLink}
+                                className={classes.loginButton}
+                                color="inherit"
+                                to="/login">
+                                {t("general.login", "Login")}
+                            </Button>
+                        )}
                     </section>
                 )}
             </Toolbar>
