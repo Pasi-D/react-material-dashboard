@@ -1,9 +1,72 @@
+/**
+ * Authentication/user session related common functions & constants
+ */
+import { pick } from "lodash";
 import { isNull, isUndefined } from "util";
 import { History } from "history";
 
+const RESPONSE_LOGIN_FAIL = "Failed to Login"; // Common Response for Login Failure (Remove on proper login flow)
 const SESSION_KEY: string = "user-session"; // local-storage key for save session
 
+export interface ILoginParams {
+    username: string;
+    password: string;
+}
+
+interface IKeyValueObject {
+    [key: string]: any;
+}
+
+interface ILoginResponseData {
+    token: string;
+    user: IKeyValueObject;
+}
+
 export let authenticated = false; // Current authentication status of the logged in user
+export let userSession: IKeyValueObject = {}; // User Session data
+export let isAdminType: boolean = false; // User type of the logged in user
+
+/**
+ * Custom function to mimic server response wait time
+ * @param ms - Time in Milliseconds
+ */
+const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+/**
+ * Login Authentication function
+ * @param authParams - username, password contained object.
+ */
+export const login = async (authParams: ILoginParams) => {
+    await sleep(6000);
+    const { username, password } = authParams;
+    // Dummy User Login Response Object
+    const dummyLoginResponseObj = {
+        token: "1X-45xNm-7mklIpOZ",
+        user: {
+            username,
+            fullName: `Dummy ${username}`,
+            isAdmin: username === "admin"
+        }
+    };
+    switch (username) {
+        case "user":
+            if (password !== "Abc@1234") {
+                throw Error(RESPONSE_LOGIN_FAIL);
+            } else {
+                createSession(dummyLoginResponseObj);
+            }
+            return dummyLoginResponseObj.user;
+        case "admin":
+            if (password !== "Abc@1234") {
+                throw Error(RESPONSE_LOGIN_FAIL);
+            } else {
+                createSession(dummyLoginResponseObj);
+            }
+            return dummyLoginResponseObj.user;
+        default:
+            throw Error(RESPONSE_LOGIN_FAIL);
+    }
+};
 
 /**
  * Remove session object localStorage data on logout.
@@ -20,14 +83,41 @@ export const logout = (routeHistory: History, redirect?: string): void => {
 
 /**
  * Checks if token exists in localstorage & updates authenticated flag.
+ * If authenticated checks the user authority state, i.e admin or not.
  */
 export const checkAuth = (): void => {
     const session = getSession();
     if (session && !isUndefined(session)) {
         authenticated = session.hasOwnProperty("token") && session.token ? true : false;
+        checkIsAdmin();
     } else {
         authenticated = false;
     }
+};
+
+/**
+ * Update global scope user session object with session data.
+ * @param session - session object
+ */
+const updateUserSession = (session: IKeyValueObject): void => {
+    userSession.id = session && session.id ? session.id : "";
+    userSession.username = session && session.username ? session.username : "";
+    userSession.fullName = session && session.fullName ? session.fullName : "";
+    userSession.isAdmin = session && session.isAdmin ? Boolean(session.isAdmin) : false;
+    userSession.token = session && session.token ? session.token : "";
+};
+
+/**
+ * Create a session object in localStorage
+ * @param loginResponseData - Response data from authentication
+ */
+const createSession = (loginResponseData: ILoginResponseData): void => {
+    const { token, user } = pick(loginResponseData, ["token", "user"]);
+    const session = { token, ...user };
+    updateUserSession(session);
+    localStorage.setItem(SESSION_KEY, JSON.stringify(userSession));
+    authenticated = true;
+    isAdminType = Boolean(user.isAdmin);
 };
 
 /**
@@ -40,4 +130,25 @@ const getSession = (): any => {
         return session;
     }
     return null;
+};
+
+/**
+ * Checks whether the user is admin type & updates the isAdminType flag
+ */
+export const checkIsAdmin = (): void => {
+    isAdminType = isAdminUser();
+};
+
+/**
+ * Returns a boolean flag indicating whether user is an admin or not.
+ */
+export const isAdminUser = (): boolean => {
+    const session = getSession();
+    let isAdmin = false;
+    if (session && !isUndefined(session)) {
+        isAdmin = session.hasOwnProperty("isAdmin") ? Boolean(session.isAdmin) : false;
+    } else {
+        isAdmin = false;
+    }
+    return isAdmin;
 };

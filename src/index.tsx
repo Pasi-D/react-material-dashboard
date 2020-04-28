@@ -11,6 +11,7 @@ import "./i18n";
 /**
  * If the page is refreshed or the app closed and reopened, that status will be lost.
  * To get around that, call checkAuth when the app is first loaded.
+ * This will also check the user status i.e admin or not.
  */
 checkAuth();
 
