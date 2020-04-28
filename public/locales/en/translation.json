@@ -4,6 +4,47 @@
   "helpToTranslate": "Help to Translate",
   "general": {
       "changeLanguage": "Change Language",
-      "login": "Login"
+      "login": "Login",
+      "signup": "Sign up",
+      "forgotPassword": "Forgot Password"
+  },
+  "forms": {
+      "login": {
+        "username": "Username",
+        "password": "Password",
+        "rememberMe": "Remember Me",
+        "Dont_have_an_account_Sign_Up": "Dont have an account ? Sign Up"
+      },
+      "signup": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "marketingPromotionEmails": "I want to receive marketing promotions & updates via Emails.",
+        "alreadyHaveAccount": "Already have an account ? Sign In"
+      },
+      "forgotPassword": {
+        "email": "Email Address", 
+        "title": "Forgotten your password ?",
+        "resetPasswordInstruction": "To reset your password, enter the email address you use to login. A link will be emailed to this address which will let you reset your password.",
+        "sendLink": "Send Link",
+        "or": "or",
+        "cancel": "Cancel"
+      }
+  },
+  "validations": {
+      "loginForm": {
+          "Username is Required": "Username is Required",
+          "Password is Required": "Password is Required"
+      },
+      "signupForm": {
+          "Please enter the Firstname": "Please enter the First Name",
+          "Please enter the Lastname": "Please enter the Last Name",
+          "Invalid email": "Invalid email",
+          "Email is required": "Email is required"
+      },
+      "forgotPassword": {
+          "Invalid email": "Invalid email",
+          "Email is required": "Email is required"
+      }
   }
 }
