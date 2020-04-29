@@ -1,5 +1,9 @@
 import React, { FC, Suspense, lazy } from "react";
 import { BrowserRouter as Router, HashRouter, Switch, Redirect } from "react-router-dom";
+import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+import theme from "assets/styles/theme";
 import "assets/css/App.css";
 
 import { authenticated } from "session/auth";
@@ -20,8 +24,10 @@ const Signup = lazy(() => import("views/Auth/SignUp"));
 
 const App: FC = () => {
     return (
-        <div className="App">
-            <SnackbarCtxProvider>
+        <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <div className="App">
                 <Router>
                     <HashRouter>
                         <Suspense fallback={<ProgressIndicator type="linear" />}>
@@ -62,8 +68,8 @@ const App: FC = () => {
                         </Suspense>
                     </HashRouter>
                 </Router>
-            </SnackbarCtxProvider>
-        </div>
+            </div>
+        </ThemeProvider>
     );
 };
 
