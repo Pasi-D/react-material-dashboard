@@ -1,7 +1,8 @@
 import React, { FC, useState } from "react";
-import { pick } from "lodash";
+import { useSnackbar } from "components/layout/Snackbar";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
+import { pick } from "lodash";
 
 import Avatar from "@material-ui/core/Avatar";
 import Box from "@material-ui/core/Box";
@@ -24,11 +25,10 @@ const SignIn: FC<ISignInProps> = () => {
     const [loading, setLoading] = useState(false);
 
     const classes = useStyles();
+    const { setAlert } = useSnackbar();
     const history = useHistory();
-
     const { t } = useTranslation();
 
-    // TODO: Snackbar Alerts
     const authenticateUser = async (loginData: ILoginParams) => {
         const user: ILoginParams = pick(loginData, ["username", "password"]);
         try {
@@ -36,9 +36,10 @@ const SignIn: FC<ISignInProps> = () => {
             const response = await login(user);
             setLoading(false);
             history.push({ pathname: "/dashboard", state: response });
-            console.log("Logged in");
+            setAlert({ open: true, type: "success", message: "Successfully logged in" });
         } catch (error) {
-            console.log("Failed to log in :", error);
+            setLoading(false);
+            setAlert({ open: true, type: "error", message: error.message });
         }
     };
 
