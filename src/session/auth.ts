@@ -37,7 +37,7 @@ const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
  * @param authParams - username, password contained object.
  */
 export const login = async (authParams: ILoginParams) => {
-    await sleep(6000);
+    await sleep(3000);
     const { username, password } = authParams;
     // Dummy User Login Response Object
     const dummyLoginResponseObj = {
