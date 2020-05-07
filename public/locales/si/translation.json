@@ -2,6 +2,8 @@
   "projectName": "React Material Dashboard",
   "welcome": "React Material Dashboard වෙත සාදරයෙන් පිළිගනිමු",
   "helpToTranslate": "පරිවර්තනය කිරීමට උදව් කරන්න",
+  "copyright": "© ප්‍රකාශණ හිමිකම",
+  "organizationName": "පෙන්ටටෙක්",
   "general": {
     "changeLanguage": "භාෂාව වෙනස් කරන්න",
     "login": "ඇතුල් වන්න",

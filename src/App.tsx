@@ -28,46 +28,48 @@ const App: FC = () => {
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <div className="App">
-                <Router>
-                    <HashRouter>
-                        <Suspense fallback={<ProgressIndicator type="linear" />}>
-                            <Switch>
-                                <AuthRoute
-                                    exact
-                                    path="/"
-                                    component={Landing}
-                                    isAuthenticated={authenticated}
-                                />
-                                <AuthRoute
-                                    exact
-                                    path="/login"
-                                    component={Login}
-                                    isAuthenticated={authenticated}
-                                />
-                                <AuthRoute
-                                    exact
-                                    path="/signup"
-                                    component={Signup}
-                                    isAuthenticated={authenticated}
-                                />
-                                <AuthRoute
-                                    exact
-                                    path="/forgot-password"
-                                    component={ForgotPassword}
-                                />
-                                <PrivateRoute
-                                    path="/dashboard"
-                                    component={Dashboard}
-                                    isAuthenticated={authenticated}
-                                />
-                                {/* Redirect to "URL/#/login" on invalid paths entered as "URL/#/INVALID" */}
-                                <Redirect from="/" to="/login" />
-                                {/* Redirect to "URL/#/login" on invalid paths entered as "URL/#/login/INVALID" */}
-                                <Redirect from="/login" to="/login" />
-                            </Switch>
-                        </Suspense>
-                    </HashRouter>
-                </Router>
+                <SnackbarCtxProvider>
+                    <Router>
+                        <HashRouter>
+                            <Suspense fallback={<ProgressIndicator type="linear" />}>
+                                <Switch>
+                                    <AuthRoute
+                                        exact
+                                        path="/"
+                                        component={Landing}
+                                        isAuthenticated={authenticated}
+                                    />
+                                    <AuthRoute
+                                        exact
+                                        path="/login"
+                                        component={Login}
+                                        isAuthenticated={authenticated}
+                                    />
+                                    <AuthRoute
+                                        exact
+                                        path="/signup"
+                                        component={Signup}
+                                        isAuthenticated={authenticated}
+                                    />
+                                    <AuthRoute
+                                        exact
+                                        path="/forgot-password"
+                                        component={ForgotPassword}
+                                    />
+                                    <PrivateRoute
+                                        path="/dashboard"
+                                        component={Dashboard}
+                                        isAuthenticated={authenticated}
+                                    />
+                                    {/* Redirect to "URL/#/login" on invalid paths entered as "URL/#/INVALID" */}
+                                    <Redirect from="/" to="/login" />
+                                    {/* Redirect to "URL/#/login" on invalid paths entered as "URL/#/login/INVALID" */}
+                                    <Redirect from="/login" to="/login" />
+                                </Switch>
+                            </Suspense>
+                        </HashRouter>
+                    </Router>
+                </SnackbarCtxProvider>
             </div>
         </ThemeProvider>
     );

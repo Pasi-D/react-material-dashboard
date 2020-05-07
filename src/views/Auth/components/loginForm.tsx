@@ -3,7 +3,7 @@
  * form-level validations of LoginForm is done here.
  */
 
-import React, { FC } from "react";
+import React, { FC, MouseEvent, useState } from "react";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { withFormik, FormikProps } from "formik";
 import { object, string } from "yup";
@@ -13,8 +13,13 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import Link from "@material-ui/core/Link";
 import TextField from "@material-ui/core/TextField";
+
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 import useStyles from "assets/styles/Auth/authStyles";
 
@@ -38,6 +43,16 @@ interface IFormValues extends ILoginParams {
 
 const RenderForm: FC<IFormProps & FormikProps<IFormValues>> = props => {
     const classes = useStyles();
+
+    const [passwordVisibility, setPasswordVisibility] = useState(false);
+
+    const handleClickShowPassword = () => {
+        setPasswordVisibility(!passwordVisibility);
+    };
+
+    const handleMouseDownPassword = (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
 
     const {
         values,
@@ -74,7 +89,7 @@ const RenderForm: FC<IFormProps & FormikProps<IFormValues>> = props => {
             <TextField
                 id="password"
                 name="password"
-                type="password"
+                type={passwordVisibility ? "text" : "password"}
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -88,6 +103,19 @@ const RenderForm: FC<IFormProps & FormikProps<IFormValues>> = props => {
                 margin="normal"
                 required
                 fullWidth
+                InputProps={{
+                    endAdornment: (
+                        <InputAdornment position="end">
+                            <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end">
+                                {passwordVisibility ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                        </InputAdornment>
+                    )
+                }}
                 label={t("forms.login.password")}
                 autoComplete="password"
             />

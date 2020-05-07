@@ -2,6 +2,8 @@
   "projectName": "React Material Dashboard",
   "welcome": "Welcome to React Material Dashboard",
   "helpToTranslate": "Help to Translate",
+  "copyright": "© Copyright",
+  "organizationName": "Pentatech",
   "general": {
       "changeLanguage": "Change Language",
       "login": "Login",
