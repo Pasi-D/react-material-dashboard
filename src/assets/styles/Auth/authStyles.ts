@@ -31,6 +31,16 @@ const useStyles = makeStyles((theme: Theme) =>
         root: {
             display: "flex"
         },
+        waveContainer: {
+            height: "fit-content"
+        },
+        waveContent: {
+            position: "absolute",
+            zIndex: -999,
+            bottom: 0,
+            left: 0,
+            width: "100%"
+        },
         submit: {
             margin: theme.spacing(3, 0, 2)
         },

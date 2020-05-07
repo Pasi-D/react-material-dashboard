@@ -21,6 +21,24 @@ import useStyles from "assets/styles/Auth/authStyles";
 
 interface ISignInProps {}
 
+const BackgroundPattern: FC = ({ children }) => {
+    const classes = useStyles();
+    return (
+        <div className={classes.waveContainer}>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 320"
+                className={classes.waveContent}>
+                <path
+                    fill="#3f51b5"
+                    fill-opacity="1"
+                    d="M0,128L80,160C160,192,320,256,480,261.3C640,267,800,213,960,202.7C1120,192,1280,224,1360,240L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+            </svg>
+            {children}
+        </div>
+    );
+};
+
 const SignIn: FC<ISignInProps> = () => {
     const [loading, setLoading] = useState(false);
 
@@ -44,26 +62,28 @@ const SignIn: FC<ISignInProps> = () => {
     };
 
     return (
-        <div className={classes.root}>
-            <AppBar type="Top" isAuthenticated={false} />
-            <Container component="main" maxWidth="xs">
-                <div className={classes.paper}>
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h2" variant="h6">
-                        {t("welcome")}
-                    </Typography>
-                    <LoginForm
-                        handleUserAuthentication={authenticateUser}
-                        loading={loading}
-                    />
-                </div>
-                <Box mt={8}>
-                    <Copyright />
-                </Box>
-            </Container>
-        </div>
+        <BackgroundPattern>
+            <div className={classes.root}>
+                <AppBar type="Top" isAuthenticated={false} />
+                <Container component="main" maxWidth="xs">
+                    <div className={classes.paper}>
+                        <Avatar className={classes.avatar}>
+                            <LockOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h2" variant="h6">
+                            {t("welcome")}
+                        </Typography>
+                        <LoginForm
+                            handleUserAuthentication={authenticateUser}
+                            loading={loading}
+                        />
+                    </div>
+                </Container>
+            </div>
+            <Box mt={8}>
+                <Copyright />
+            </Box>
+        </BackgroundPattern>
     );
 };
 
