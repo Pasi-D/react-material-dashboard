@@ -2,8 +2,7 @@
  * Top App Bar styles
  */
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-
-const DRAWER_WIDTH = 240;
+import { DRAWER_WIDTH } from "assets/styles/Dashboard";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({

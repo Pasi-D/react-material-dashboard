@@ -4,6 +4,9 @@
   "helpToTranslate": "පරිවර්තනය කිරීමට උදව් කරන්න",
   "copyright": "© ප්‍රකාශණ හිමිකම",
   "organizationName": "පෙන්ටටෙක්",
+  "drawer": {
+    "Dashboard": "උපකරණ පුවරුව"
+  },
   "general": {
     "changeLanguage": "භාෂාව වෙනස් කරන්න",
     "login": "ඇතුල් වන්න",

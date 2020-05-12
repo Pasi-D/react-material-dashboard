@@ -4,6 +4,9 @@
   "helpToTranslate": "Help to Translate",
   "copyright": "© Copyright",
   "organizationName": "Pentatech",
+  "drawer": {
+      "Dashboard": "Dashboard"
+  },
   "general": {
       "changeLanguage": "Change Language",
       "login": "Login",
