@@ -1,5 +1,6 @@
 {
   "name": "react-material-dashboard",
+  "homepage": "https://xxzang3tsuxx.github.io/react-material-dashboard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -31,13 +32,16 @@
     "@types/yup": "^0.28.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "gh-pages": "^3.1.0",
     "prettier": "^1.19.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
