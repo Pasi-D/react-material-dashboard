@@ -3,23 +3,70 @@
  */
 import React, { FC } from "react";
 
-import Divider from "@material-ui/core/Divider";
-import Drawer from "@material-ui/core/Drawer";
-import IconButton from "@material-ui/core/IconButton";
-import List from "@material-ui/core/List";
+import {
+    Avatar,
+    Collapse,
+    Divider,
+    Drawer,
+    IconButton,
+    List,
+    Typography
+} from "@material-ui/core";
 
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+
+import { startCase } from "lodash";
+
+import { useSession } from "session/auth";
 
 import clsx from "clsx";
 import useStyles from "assets/styles/ui/sidebar";
 
-interface ISidebarProps {
+type SidebarProps = {
     isDrawerToggled: boolean;
     closeDrawer: () => void;
     navItems: React.FC<any>;
-}
+};
 
-const Sidebar: FC<ISidebarProps> = ({ isDrawerToggled: open, closeDrawer, navItems }) => {
+type SidebarProfile = {
+    display: boolean;
+};
+
+const Profile: FC<SidebarProfile> = ({ display }) => {
+    const classes = useStyles();
+
+    const { session } = useSession();
+
+    const getUserFirstLetter = () => {
+        if (session && session.fullName) {
+            return (session.fullName as string).charAt(0);
+        }
+        return "-";
+    };
+
+    const getProfileRole = () => {
+        if (session && session.role) {
+            return startCase(session.role);
+        }
+        return "";
+    };
+
+    return (
+        <Collapse in={display}>
+            <div className={classes.profileRoot}>
+                <Avatar alt="Person" className={classes.profileAvatar}>
+                    {getUserFirstLetter()}
+                </Avatar>
+                <Typography className={classes.profileName} variant="h6">
+                    {`${session.fullName}`}
+                </Typography>
+                <Typography variant="body2">{getProfileRole()}</Typography>
+            </div>
+        </Collapse>
+    );
+};
+
+const Sidebar: FC<SidebarProps> = ({ isDrawerToggled: open, closeDrawer, navItems }) => {
     const classes = useStyles();
     return (
         <Drawer
@@ -33,6 +80,7 @@ const Sidebar: FC<ISidebarProps> = ({ isDrawerToggled: open, closeDrawer, navIte
                     <ChevronLeftIcon />
                 </IconButton>
             </div>
+            <Profile display={open} />
             <Divider />
             <List component={navItems} />
         </Drawer>
