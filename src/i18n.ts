@@ -23,6 +23,14 @@ export const LANGUAGES_KEY = LANGUAGES.map(lang => {
     return lang.code;
 });
 
+const backendOptions = {
+    // path where resources get loaded from, or a function
+    // returning a path:
+    // function(lngs, namespaces) { return customPath; }
+    // the returned path will interpolate lng, ns if provided like giving a static path
+    loadPath: "/locales/{{lng}}/{{ns}}.json"
+};
+
 i18n
     // load translation using http -> see /public/locales
     .use(Backend)
@@ -36,7 +44,8 @@ i18n
 
         interpolation: {
             escapeValue: false // Not needed for react as it escapes by default
-        }
+        },
+        backend: backendOptions
     });
 
 export default i18n;
