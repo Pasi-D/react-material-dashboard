@@ -1,6 +1,8 @@
 /**
  * Authentication/user session related common functions & constants
  */
+import { useEffect, useState } from "react";
+
 import { pick } from "lodash";
 import { isNull, isUndefined } from "util";
 import { History } from "history";
@@ -44,8 +46,9 @@ export const login = async (authParams: ILoginParams) => {
         token: "1X-45xNm-7mklIpOZ",
         user: {
             username,
-            fullName: `Dummy ${username}`,
-            isAdmin: username === "admin"
+            fullName: `${username}`,
+            isAdmin: username === "admin",
+            role: username === "admin" ? "Admin" : "User"
         }
     };
     switch (username) {
@@ -105,6 +108,7 @@ const updateUserSession = (session: IKeyValueObject): void => {
     userSession.fullName = session && session.fullName ? session.fullName : "";
     userSession.isAdmin = session && session.isAdmin ? Boolean(session.isAdmin) : false;
     userSession.token = session && session.token ? session.token : "";
+    userSession.role = session && session.role ? session.role : "";
 };
 
 /**
@@ -151,4 +155,37 @@ export const isAdminUser = (): boolean => {
         isAdmin = false;
     }
     return isAdmin;
+};
+
+/**
+ * React hook to handle session from browser storage
+ * @param sessionKey - Browser storage key. Default is set to the key `user-session`
+ * @returns If there is a session in your browser storage then it will be returned. If there is no session, it will return null.
+ *
+ * Usage - This hook is useful in scenarios where you need to listen to session changes in functional components
+ *
+ * import { useSession } from "session/auth";
+ *
+ * ...
+ * <FC>
+ *  const { session } = useSession();
+ * </FC>
+ */
+export const useSession = () => {
+    const [state, setState] = useState<any>(getSession);
+
+    const syncState = (event: StorageEvent) => {
+        if (event.key === SESSION_KEY) {
+            setState(getSession);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("storage", syncState);
+        return () => {
+            window.removeEventListener("storage", syncState);
+        };
+    }, []);
+
+    return { session: state };
 };

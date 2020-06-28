@@ -16,10 +16,13 @@ import {
     RouteItem
 } from "views/Dashboard/routes";
 
+import useStyles from "assets/styles/ui/sidebar";
+
 // Admin Related Drawer Navigational routes
 export const AdminNavigationItems: FC = () => {
     const { url } = useRouteMatch();
     const { t } = useTranslation();
+    const classes = useStyles();
     return (
         <>
             {adminRoutes
@@ -32,8 +35,13 @@ export const AdminNavigationItems: FC = () => {
                             to={`${url}${routeItem.path}`}
                             replace
                             key={key}>
-                            <ListItemIcon>{<routeItem.icon />}</ListItemIcon>
-                            <ListItemText primary={t(`drawer.${routeItem.name}`)} />
+                            <ListItemIcon>
+                                {<routeItem.icon className={classes.drawerItem} />}
+                            </ListItemIcon>
+                            <ListItemText
+                                className={classes.drawerItem}
+                                primary={t(`drawer.${routeItem.name}`)}
+                            />
                         </ListItem>
                     );
                 })}
@@ -44,6 +52,7 @@ export const AdminNavigationItems: FC = () => {
 // User Related Drawer Navigational routes
 export const UserNavigationItems: FC = () => {
     const { url } = useRouteMatch();
+    const classes = useStyles();
     return (
         <>
             {userRoutes
@@ -56,8 +65,13 @@ export const UserNavigationItems: FC = () => {
                             to={`${url}${routeItem.path}`}
                             replace
                             key={key}>
-                            <ListItemIcon>{<routeItem.icon />}</ListItemIcon>
-                            <ListItemText primary={routeItem.name} />
+                            <ListItemIcon>
+                                {<routeItem.icon className={classes.drawerItem} />}
+                            </ListItemIcon>
+                            <ListItemText
+                                className={classes.drawerItem}
+                                primary={routeItem.name}
+                            />
                         </ListItem>
                     );
                 })}

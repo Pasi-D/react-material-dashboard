@@ -2,6 +2,7 @@
  * Sidebar/Drawer styles
  */
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 import { DRAWER_WIDTH } from "assets/styles/Dashboard";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -13,7 +14,8 @@ const useStyles = makeStyles((theme: Theme) =>
             transition: theme.transitions.create("width", {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.enteringScreen
-            })
+            }),
+            backgroundColor: fade(theme.palette.primary.main, 1)
         },
         drawerPaperClose: {
             overflowX: "hidden",
@@ -25,6 +27,24 @@ const useStyles = makeStyles((theme: Theme) =>
             [theme.breakpoints.up("sm")]: {
                 width: theme.spacing(9)
             }
+        },
+        drawerItem: {
+            color: "white"
+        },
+        profileAvatar: {
+            width: 60,
+            height: 60
+        },
+        profileName: {
+            marginTop: theme.spacing(1),
+            fontSize: 16,
+            color: "#fff"
+        },
+        profileRoot: {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            minHeight: "fit-content"
         },
         toolbarIcon: {
             display: "flex",
