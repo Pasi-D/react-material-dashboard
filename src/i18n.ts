@@ -28,7 +28,8 @@ const backendOptions = {
     // returning a path:
     // function(lngs, namespaces) { return customPath; }
     // the returned path will interpolate lng, ns if provided like giving a static path
-    loadPath: "/locales/{{lng}}/{{ns}}.json"
+    // For gh-page this should be "{GITHUB-PROJECT-NAME}//locales/{{lng}}/{{ns}}.json" otherwise "/locales/{{lng}}/{{ns}}.json"
+    loadPath: "react-material-dashboard/locales/{{lng}}/{{ns}}.json"
 };
 
 i18n
