@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "57cc78b1d69e881a153bbe4129be5b25",
+    "revision": "302eb4d1d7bd812b35fd3e9a87f1cf89",
     "url": "/react-material-dashboard/index.html"
   },
   {
-    "revision": "d0b1705e0da1a14886e4",
+    "revision": "f1bf8659f645ab5699c9",
     "url": "/react-material-dashboard/static/css/main.d1b05096.chunk.css"
   },
   {
@@ -60,8 +60,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-material-dashboard/static/js/9.91dca5cc.chunk.js"
   },
   {
-    "revision": "d0b1705e0da1a14886e4",
-    "url": "/react-material-dashboard/static/js/main.cea744dd.chunk.js"
+    "revision": "f1bf8659f645ab5699c9",
+    "url": "/react-material-dashboard/static/js/main.a4c8767a.chunk.js"
   },
   {
     "revision": "7f8bf4d55d9022e2c589",
