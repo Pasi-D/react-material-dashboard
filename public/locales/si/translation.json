@@ -1,0 +1,55 @@
+{
+  "projectName": "React Material Dashboard",
+  "welcome": "React Material Dashboard වෙත සාදරයෙන් පිළිගනිමු",
+  "helpToTranslate": "පරිවර්තනය කිරීමට උදව් කරන්න",
+  "copyright": "© ප්‍රකාශණ හිමිකම",
+  "organizationName": "පෙන්ටටෙක්",
+  "drawer": {
+    "Dashboard": "උපකරණ පුවරුව"
+  },
+  "general": {
+    "changeLanguage": "භාෂාව වෙනස් කරන්න",
+    "login": "ඇතුල් වන්න",
+    "signup": "ලියාපදිංචි වන්න",
+    "forgotPassword": "මුරපදය අමතක වුණා ද ?"
+  },
+  "forms": {
+    "login": {
+      "username": "පරිශීලක නාමය",
+      "password": "මුරපදය",
+      "rememberMe": "මාව මතක තබා ගන්න",
+      "Dont_have_an_account_Sign_Up": "ගිණුමක් නැද්ද? ලියාපදිංචි වන්න"
+    },
+    "signup": {
+      "firstName": "මුල් නම",
+      "lastName": "අවසන් නම",
+      "email": "විද්යුත් තැපෑල",
+      "marketingPromotionEmails": "මට ඊමේල් හරහා අලෙවිකරණ ප්‍රවර්ධන සහ යාවත්කාලීන කිරීම් ලබා ගැනීමට අවශ්‍යයි.",
+      "alreadyHaveAccount": "දැනටමත් ගිණුමක් තිබේද? ඇතුල් වන්න"
+    },
+    "forgotPassword": {
+      "email": "විද්යුත් තැපෑල", 
+      "title": "ඔබගේ මුරපදය අමතකද ?",
+      "resetPasswordInstruction": "ඔබගේ මුරපදය නැවත සැකසීමට, ඔබ පිවිසීමට භාවිතා කරන විද්‍යුත් තැපැල් ලිපිනය ඇතුළත් කරන්න. ඔබගේ මුරපදය නැවත සැකසීමට ඔබට ඉඩ සලසන සබැඳියක් මෙම ලිපිනයට විද්‍යුත් තැපැල් කරනු ලැබේ.",
+      "sendLink": "සබැඳිය යවන්න",
+      "or": "හෝ",
+      "cancel": "අවලංගු කරන්න"
+    }
+  },
+  "validations": {
+    "loginForm": {
+        "Username is Required": "පරිශීලක නාමය හිස්ව තැබිය නොහැක",
+        "Password is Required": "මුරපදය හිස්ව තැබිය නොහැක"
+    },
+    "signupForm": {
+      "Please enter the Firstname": "කරුණාකර පළමු නම ඇතුළත් කරන්න",
+      "Please enter the Lastname": "කරුණාකර අවසාන නම ඇතුළත් කරන්න",
+      "Invalid email": "අවලංගු විද්‍යුත් තැපෑල් ලිපිනයකි",
+      "Email is required": "විද්‍යුත් තැපෑල අවශ්‍යයි"
+    },
+    "forgotPassword": {
+      "Invalid email": "අවලංගු විද්‍යුත් තැපෑල් ලිපිනයකි",
+      "Email is required": "විද්‍යුත් තැපෑල අවශ්‍යයි"
+    }
+  }
+}
