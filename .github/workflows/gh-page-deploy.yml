@@ -12,12 +12,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ops/gh-pages
-      - name: Setup node
+      - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
-      - name: Install Packages
-        run: npm ci
+          node-version: '12.x'
+      - name: Install dependencies
+        run: yarn
       - name: Re-create a copy of .env.dist 
         run: rm -f .env && cp .env.dist .env
       - name: Deploy to Gihub Pages
@@ -25,4 +25,4 @@ jobs:
           git config --global user.email ${{secrets.MY_GITHUB_EMAIL}}
           git config --global user.name ${{secrets.MY_GITHUB_USERNAME}}
           git remote set-url https://${{secrets.MY_GITHUB_PERSONAL_ACCESS_TOKEN}}@github.com/${{secrets.MY_GITHUB_USERNAME}}/${{secrets.MY_GITHUB_REPO_NAME}}.git
-          npm run deploy
+          yarn deploy
