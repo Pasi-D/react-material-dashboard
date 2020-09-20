@@ -28,7 +28,7 @@ const backendOptions = {
     // returning a path:
     // function(lngs, namespaces) { return customPath; }
     // the returned path will interpolate lng, ns if provided like giving a static path
-    loadPath: "/locales/{{lng}}/{{ns}}.json"
+    loadPath: `${process.env.REACT_APP_GH_HOMEPAGE}/locales/{{lng}}/{{ns}}.json`
 };
 
 i18n
