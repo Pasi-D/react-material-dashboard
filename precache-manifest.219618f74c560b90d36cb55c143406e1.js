@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "302eb4d1d7bd812b35fd3e9a87f1cf89",
+    "revision": "e7ddfdb4cb2f8740af36d21d80a893ff",
     "url": "/react-material-dashboard/index.html"
   },
   {
-    "revision": "f1bf8659f645ab5699c9",
+    "revision": "b0be87f8015f06ab0c93",
     "url": "/react-material-dashboard/static/css/main.d1b05096.chunk.css"
   },
   {
@@ -24,48 +24,48 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-material-dashboard/static/js/1.ad56cb82.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fe74b033c09cd0fbd8e3",
-    "url": "/react-material-dashboard/static/js/10.fe87a676.chunk.js"
+    "revision": "38c913071811e31735ae",
+    "url": "/react-material-dashboard/static/js/10.89d98866.chunk.js"
   },
   {
-    "revision": "a1abca581318e5b3736d",
-    "url": "/react-material-dashboard/static/js/11.aeed7435.chunk.js"
+    "revision": "85493b1ab5e67f6927a0",
+    "url": "/react-material-dashboard/static/js/11.060c3cb5.chunk.js"
   },
   {
     "revision": "344588180bca45566830",
     "url": "/react-material-dashboard/static/js/2.df9814ee.chunk.js"
   },
   {
-    "revision": "208e96ba8df9cab3fa9d",
-    "url": "/react-material-dashboard/static/js/5.be619075.chunk.js"
+    "revision": "4918415ad6be47fc4249",
+    "url": "/react-material-dashboard/static/js/5.d87979e0.chunk.js"
   },
   {
     "revision": "68ba00d5eb083746d913686923a3d904",
-    "url": "/react-material-dashboard/static/js/5.be619075.chunk.js.LICENSE.txt"
+    "url": "/react-material-dashboard/static/js/5.d87979e0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "17febdc378e51eff47bc",
-    "url": "/react-material-dashboard/static/js/6.35158039.chunk.js"
+    "revision": "29ef0a01356048b24cf9",
+    "url": "/react-material-dashboard/static/js/6.5ec04827.chunk.js"
   },
   {
-    "revision": "d94a1ec7529fec9cb881",
-    "url": "/react-material-dashboard/static/js/7.1ae2bd21.chunk.js"
+    "revision": "3fcfc4424db3a12f1eec",
+    "url": "/react-material-dashboard/static/js/7.593470ba.chunk.js"
   },
   {
-    "revision": "e0153e5c50df1bfa1bdf",
-    "url": "/react-material-dashboard/static/js/8.9d715960.chunk.js"
+    "revision": "d6e3a7a2f53cd3b80e4b",
+    "url": "/react-material-dashboard/static/js/8.1e428813.chunk.js"
   },
   {
     "revision": "e03cd4eaa242cb707f30",
     "url": "/react-material-dashboard/static/js/9.91dca5cc.chunk.js"
   },
   {
-    "revision": "f1bf8659f645ab5699c9",
-    "url": "/react-material-dashboard/static/js/main.a4c8767a.chunk.js"
+    "revision": "b0be87f8015f06ab0c93",
+    "url": "/react-material-dashboard/static/js/main.642cdadd.chunk.js"
   },
   {
-    "revision": "7f8bf4d55d9022e2c589",
-    "url": "/react-material-dashboard/static/js/runtime-main.963d0b59.js"
+    "revision": "604c5df27f8c042e1eb1",
+    "url": "/react-material-dashboard/static/js/runtime-main.a5497548.js"
   },
   {
     "revision": "5e98861f6ef1ce225121abfb3f418166",
