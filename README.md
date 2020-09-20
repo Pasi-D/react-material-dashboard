@@ -20,6 +20,24 @@ Create a copy of the environment variables
   cp .env.dist .env
 ```
 
+## Deploying to github pages
+
+checkout to ```ops/gh-pages``` branch to deploy to github pages. (This measure was taken as internationalization files could not be resolved in github pages properly.)
+
+```bash
+git fetch origin ops/gh-pages
+
+git checkout ops/gh-pages
+```
+
+Run deploy script
+
+```bash
+yarn deploy
+```
+
+Visit https://xxzang3tsuxx.github.io/react-material-dashboard for deployed site.
+
 In the project directory, you can run:
 
 ### `yarn start`
