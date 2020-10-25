@@ -75,6 +75,13 @@ const Landing: FC = () => {
                         </div>
                         {/* Waves end */}
                     </div>
+                    <iframe
+                        src="https://ghbtns.com/github-btn.html?user=xXZang3tsuXx&repo=react-material-dashboard&type=star&count=true"
+                        frameBorder="0"
+                        scrolling="0"
+                        width="150"
+                        height="20"
+                        title="GitHub"></iframe>
                 </div>
                 <Box mt={8}>
                     <Copyright />
