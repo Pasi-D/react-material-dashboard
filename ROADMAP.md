@@ -4,4 +4,4 @@
 - [ ] Adoption of Experimental React Concurrent Mode once recommended for production, using suspense for data fetching (Future Adoption)
 - [x] Adoption of internationalization. (i.e multi-language support)
     - [] Storing language preferences in cookies.
-- [ ] NVM for Node version Management.
+- [x] NVM for Node version Management.
