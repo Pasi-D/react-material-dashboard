@@ -4,7 +4,6 @@
 import { useEffect, useState } from "react";
 
 import { pick } from "lodash";
-import { isNull, isUndefined } from "util";
 import { History } from "history";
 
 const RESPONSE_LOGIN_FAIL = "Failed to Login"; // Common Response for Login Failure (Remove on proper login flow)
@@ -90,7 +89,7 @@ export const logout = (routeHistory: History, redirect?: string): void => {
  */
 export const checkAuth = (): void => {
     const session = getSession();
-    if (session && !isUndefined(session)) {
+    if (session) {
         authenticated = session.hasOwnProperty("token") && session.token ? true : false;
         checkIsAdmin();
     } else {
@@ -129,7 +128,7 @@ const createSession = (loginResponseData: ILoginResponseData): void => {
  */
 const getSession = (): any => {
     let sessionJson: any = localStorage.getItem(SESSION_KEY);
-    if (sessionJson && !isNull(sessionJson)) {
+    if (sessionJson) {
         const session = JSON.parse(sessionJson);
         return session;
     }
@@ -149,7 +148,7 @@ export const checkIsAdmin = (): void => {
 export const isAdminUser = (): boolean => {
     const session = getSession();
     let isAdmin = false;
-    if (session && !isUndefined(session)) {
+    if (session) {
         isAdmin = session.hasOwnProperty("isAdmin") ? Boolean(session.isAdmin) : false;
     } else {
         isAdmin = false;
